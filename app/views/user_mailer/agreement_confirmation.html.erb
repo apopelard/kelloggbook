@@ -1,0 +1,10 @@
+<p>Dear <%= @user.full_name %>,</p>
+
+<p>You have now approved the release of your profile information for the Kelloggbook</p>
+<p>If you do not agree with this release please update your profile at:</p>
+<p><%= link_to "Edit profile", edit_user_url(@user) %></p>
+<p>&nbsp;</p>
+<p>If your profile is registered as agreed for release after April/xx, this information will be used for the printing of the Kelloggbook.</p>
+<p>&nbsp;</p>
+<p>Thank you,<br>
+The Kelloggbook team</p>

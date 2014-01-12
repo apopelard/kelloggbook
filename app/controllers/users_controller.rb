@@ -20,9 +20,27 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+
+    respond_to do |format|
+      format.html do
+        render 'index'
+      end
+      format.json do
+        if params[:agree] == "1"
+          render :json => User.where(:agreement => true)
+        elsif params[:agree] == "0"
+          render :json => User.where(:agreement => false)
+        else
+          render :json => User.all
+        end
+      end
+    end
   end
 
   def show
+    if current_user.sign_in_count == 1
+      UserMailer.registration_confirmation(current_user).deliver
+    end
   end
 
   def new
@@ -63,6 +81,9 @@ class UsersController < ApplicationController
     @user.program_id = params[:program_id]
     @user.section_id = params[:section_id]
     @user.quote = params[:quote]
+    if @user.agreement == false && params[:agreement] == "true"
+      UserMailer.agreement_confirmation(@user).deliver
+    end
     if params[:agreement] == "true"
       @user.agreement = params[:agreement]
     else

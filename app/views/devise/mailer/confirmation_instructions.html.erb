@@ -1,5 +1,15 @@
-<p>Welcome <%= @email %>!</p>
+<p>Welcome to Kelloggbook!</p>
 
 <p>You can confirm your account email through the link below:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p>
+
+<p>Don't forget to complete your yearbook profile at:</p>
+
+<p><%= link_to 'Update my profile', edit_user(current_user.id) %></p>
+
+<p>Once your picture has been taken, we will reach out to you for final profile updates and release approval</p>
+
+<p>&nbsp;</p>
+<p>Thank you,<br>
+The Kelloggbook team</p>
