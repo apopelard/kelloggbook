@@ -9,12 +9,12 @@ Kelloggbook::Application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com"
-    :port                 => 587
-    :domain               => "gmail.com"
-    :user_name            => "meetingapp.dev@gmail.com"
-    :password             => "KIEI462buddy"
-    :authentication       => "plain"
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => "gmail.com",
+    :user_name            => "meetingapp.dev@gmail.com",
+    :password             => "KIEI462buddy",
+    :authentication       => "plain",
     :enable_starttls_auto => true
   }
 
