@@ -1,0 +1,57 @@
+<div class="page-header">
+  <h1>Editing profile</h1>
+</div>
+
+<%= form_tag(user_url(@user), method: 'patch', class: 'form-horizontal') do %>
+
+  <div class="form-group">
+    <%= label_tag :first_name, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :first_name, @user.first_name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :last_name, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :last_name, @user.last_name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :program_id, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= select_tag :program_id, options_from_collection_for_select(@programs, :id, :name, @user.program.id), class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :section_id, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= select_tag :section_id, options_from_collection_for_select(@sections, :id, :name, @user.section.id), class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :quote, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_area_tag :quote, @user.quote, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-2">
+      The above information is correct and ready for publication
+    </div>
+    <div class="col-md-6">
+      <%= check_box_tag :agreement, 1, @user.agreement? %>
+      <%= label_tag :agreement, "I agree for this information to be published", class: 'control-label' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-6">
+      <%= submit_tag "Save Update", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

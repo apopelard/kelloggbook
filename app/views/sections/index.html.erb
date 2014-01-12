@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>Sections</h1>
+</div>
+
+<p><%= link_to 'Add a New Section', new_section_url, class: 'btn btn-primary' %></p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sections.each do |section| %>
+      <tr>
+        <td><%= section.name %></td>
+        <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, section_url(section), class: 'btn btn-primary' %></td>
+        <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_section_url(section), class: 'btn btn-warning' %></td>
+        <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, section_url(section), method: 'delete', data: { confirm: "Do you really want to delete this section?" }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

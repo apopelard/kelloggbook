@@ -1,0 +1,63 @@
+<div class="page-header">
+  <h1>Welcome <%= @user.full_name %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <strong>My Picture</strong>
+  </div>
+  <div class="col-md-8">
+    <%= image_tag "#", width: "150", heigth: "150", alt: @user.full_name, class: "img-thumbnail" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <strong>My Name</strong>
+  </div>
+  <div class="col-md-8">
+    <%= @user.full_name %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <strong>My Program</strong>
+  </div>
+  <div class="col-md-8">
+    <%= @user.program.name %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <strong>My Section</strong>
+  </div>
+  <div class="col-md-8">
+    <%= @user.section.name %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <strong>My Quote</strong>
+  </div>
+  <div class="col-md-8">
+    "<em><%= @user.quote %></em>"
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <strong>Publication Agreement</strong>
+  </div>
+  <div class="col-md-8">
+    <% if @user.agreement? %>
+      All the above information is correct and I agree with it being published
+    <% else %>
+      I <u>do not agree</u> with the above information being published
+    <% end %>
+  </div>
+</div>
+<div>&nbsp;</div>
+<%= link_to "Update profile", edit_user_url(@user.id), class: "btn btn-primary" %>
