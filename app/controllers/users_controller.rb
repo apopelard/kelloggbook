@@ -38,8 +38,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user.sign_in_count == 1
+    if current_user.sign_in_count == 1 && current_user.registered == false
       UserMailer.registration_confirmation(current_user).deliver
+      current_user.registered = true
+      current_user.save
     end
   end
 
