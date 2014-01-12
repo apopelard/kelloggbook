@@ -25,7 +25,9 @@
     <strong>My Program</strong>
   </div>
   <div class="col-md-8">
-    <%= @user.program.name %>
+    <% if @user.program.present? %>
+      <%= @user.program.name %>
+    <% end %>
   </div>
 </div>
 
@@ -34,7 +36,9 @@
     <strong>My Section</strong>
   </div>
   <div class="col-md-8">
-    <%= @user.section.name %>
+    <% if @user.section.present? %>
+      <%= @user.section.name %>
+    <% end %>
   </div>
 </div>
 

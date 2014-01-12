@@ -48,6 +48,13 @@ class UsersController < ApplicationController
   def edit
     @programs = Program.all
     @sections = Section.all
+    if @user.program.present?
+      @current_program = @user.program.id
+    end
+    if @user.section.present?
+      @current_section = @user.section.id
+    end
+
   end
 
   def update
@@ -56,7 +63,7 @@ class UsersController < ApplicationController
     @user.program_id = params[:program_id]
     @user.section_id = params[:section_id]
     @user.quote = params[:quote]
-    if params[:agreement] == true
+    if params[:agreement] == "true"
       @user.agreement = params[:agreement]
     else
       @user.agreement = false

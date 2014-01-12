@@ -21,14 +21,14 @@
   <div class="form-group">
     <%= label_tag :program_id, nil, class: 'col-md-2 control-label' %>
     <div class="col-md-6">
-      <%= select_tag :program_id, options_from_collection_for_select(@programs, :id, :name, @user.program.id), class: 'form-control' %>
+      <%= select_tag :program_id, options_from_collection_for_select(@programs, :id, :name, @current_program), class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
     <%= label_tag :section_id, nil, class: 'col-md-2 control-label' %>
     <div class="col-md-6">
-      <%= select_tag :section_id, options_from_collection_for_select(@sections, :id, :name, @user.section.id), class: 'form-control' %>
+      <%= select_tag :section_id, options_from_collection_for_select(@sections, :id, :name, @current_section), class: 'form-control' %>
     </div>
   </div>
 
