@@ -56,10 +56,10 @@ class UsersController < ApplicationController
     @user.program_id = params[:program_id]
     @user.section_id = params[:section_id]
     @user.quote = params[:quote]
-    if params[:agreement] == "1"
+    if params[:agreement] == true
       @user.agreement = params[:agreement]
     else
-      @user.agreement = 0
+      @user.agreement = false
     end
 
     if @user.save

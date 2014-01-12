@@ -44,7 +44,7 @@
       The above information is correct and ready for publication
     </div>
     <div class="col-md-6">
-      <%= check_box_tag :agreement, 1, @user.agreement? %>
+      <%= check_box_tag :agreement, true, @user.agreement? %>
       <%= label_tag :agreement, "I agree for this information to be published", class: 'control-label' %>
     </div>
   </div>

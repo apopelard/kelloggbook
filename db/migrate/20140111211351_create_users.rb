@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :program_id, :default => 0
       t.integer :section_id, :default => 0
       t.text :quote
-      t.boolean :agreement, :default => 0, :null => false
+      t.boolean :agreement, :default => true, :null => false
       t.timestamp
     end
   end
