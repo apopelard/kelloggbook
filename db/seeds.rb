@@ -7,17 +7,21 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Populate programs
+Program.destroy_all
 programs = ["2Y", "1Y", "MMM", "JD-MBA"]
 programs.each do |program|
   p = Program.new
   p.name = program
   p.save
 end
+puts "There are now #{Program.count} programs registered"
 
 # Populate sections
+Section.destroy_all
 sections = ["Poets", "Jive Turkeys", "Big Dogs", "Cash Cows", "Buckets", "Bullfrogs", "Moose", "Highlanders", "Roadrunners"]
 sections.each do |section|
   s = Section.new
   s.name = section
   s.save
 end
+puts "There are now #{Section.count} sections registered"

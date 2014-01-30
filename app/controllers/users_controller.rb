@@ -80,11 +80,20 @@ class UsersController < ApplicationController
   def update
     @user.first_name = params[:first_name]
     @user.last_name = params[:last_name]
+    @user.jv_first_name = params[:jv_first_name]
+    @user.jv_last_name = params[:jv_last_name]
     @user.program_id = params[:program_id]
     @user.section_id = params[:section_id]
+    @user.kwest_attended = params[:kwest_attended]
+    @user.kwest_led = params[:kwest_led]
     @user.quote = params[:quote]
     if @user.agreement == false && params[:agreement] == "true"
       UserMailer.agreement_confirmation(@user).deliver
+    end
+    if params[:jv_presence] == "true"
+      @user.jv_presence = params[:agreement]
+    else
+      @user.jv_presence = false
     end
     if params[:agreement] == "true"
       @user.agreement = params[:agreement]

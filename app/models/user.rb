@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   def full_name
     return "#{first_name} #{last_name}".titleize
   end
+
+  def jv_full_name
+    return "#{jv_first_name} #{jv_last_name}".titleize
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112220712) do
+ActiveRecord::Schema.define(version: 20140116053446) do
 
   create_table "programs", force: true do |t|
     t.string "name"
@@ -39,6 +39,11 @@ ActiveRecord::Schema.define(version: 20140112220712) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "registered",             default: false, null: false
+    t.boolean  "jv_presence",            default: false, null: false
+    t.string   "jv_first_name"
+    t.string   "jv_last_name"
+    t.string   "kwest_attended"
+    t.string   "kwest_led"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

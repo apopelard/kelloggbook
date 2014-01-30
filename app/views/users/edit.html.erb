@@ -32,6 +32,29 @@
   </div>
 
   <div class="form-group">
+    <div class="col-md-3 col-md-offset-2">
+      <%= radio_button_tag :jv_presence, true, @user.jv_presence? %> Include my JV's name
+    </div>
+    <div class="col-md-3 ">
+      <%= radio_button_tag :jv_presence, false, !@user.jv_presence %> Don't include my JV's name
+    </div>
+  </div>
+
+  <div id="jv_first" class="form-group">
+    <%= label_tag :jv_first_name, "My JV's first name", class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :jv_first_name, @user.jv_first_name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div id="jv_last" class="form-group">
+    <%= label_tag :jv_last_name, "My JV's last name", class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :jv_last_name, @user.jv_last_name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= label_tag :program_id, nil, class: 'col-md-2 control-label' %>
     <div class="col-md-6">
       <%= select_tag :program_id, options_from_collection_for_select(@programs, :id, :name, @current_program), class: 'form-control' %>
@@ -46,7 +69,21 @@
   </div>
 
   <div class="form-group">
-    <%= label_tag :quote, nil, class: 'col-md-2 control-label' %>
+    <%= label_tag :kwest_attended, "Which KWEST trip did you attend?", class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :kwest_attended, @user.kwest_attended, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :kwest_led, "Which KWEST trip did you lead?", class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :kwest_led, @user.kwest_led, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :quote, "Message to myself in 2024", class: 'col-md-2 control-label' %>
     <div class="col-md-6">
       <%= text_area_tag :quote, @user.quote, class: 'form-control' %>
     </div>
@@ -56,10 +93,15 @@
     <div class="col-md-2">
       The above information is correct and ready for publication
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 align-left">
       <%= check_box_tag :agreement, true, @user.agreement? %>
-      <%= label_tag :agreement, "I agree for this information to be published", class: 'control-label' %>
+      <%= label_tag :agreement, "By checking this box, I hereby agree with the below waiver", class: 'control-label' %>
     </div>
+  </div>
+  <div class="col-md-6 col-md-offset-2 align-left bottom-space">
+    <strong>WAIVER<br></strong>
+    By checking this box, I hereby grant permission to the Kellogg Photography Club (KPC) to use my likeness and/or that of my family, whether through the use of digital or print photographs, or other media, for KPC's Portrait project and promotional purposes. I understand that my likeness may be used in KPC's publications, literature, the internet, or other visual means that the KPC may choose to use to promote the Portrait project, and other future KPC activities.
+    In connection with the above paragraph, I hereby release and waive any claim I may have against the KPC, its officers, or members.
   </div>
 
   <div class="form-group">

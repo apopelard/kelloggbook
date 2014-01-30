@@ -7,11 +7,11 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Email</th>
-      <th>First name</th>
-      <th>Last name</th>
+      <th>Picture</th>
+      <th>Name</th>
+      <th>JV</th>
       <th>Program</th>
-      <th>Section</th>
+      <th>KWEST</th>
       <th>Quote</th>
       <th>Agreement</th>
       <th></th>
@@ -23,11 +23,15 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.email %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.program_id %></td>
-        <td><%= user.section_id %></td>
+        <td><%= image_tag "https://dl.dropboxusercontent.com/u/93626631/portrait/#{user.email.split('@')[0]}.jpg", width: "150", heigth: "150", alt: user.full_name, class: "img-thumbnail" %></td>
+        <td><%= user.full_name %><br>
+          <%= user.email %></td>
+        <td><%= user.jv_full_name %></td>
+        <td><%= user.program.name %><br>
+        <%= user.section.name %></td>
+        <td><%= user.kwest_attended %><br>
+        <%= user.kwest_led %>
+        </td>
         <td><%= user.quote %></td>
         <td><%= user.agreement? %></td>
         <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, user_url(user), class: 'btn btn-primary' %></td>

@@ -7,7 +7,7 @@
     <strong>My Picture</strong>
   </div>
   <div class="col-md-8">
-    <%= image_tag "https://dl.dropboxusercontent.com/u/49026543/#{@user.email.split('@')[0]}.jpg", width: "150", heigth: "150", alt: @user.full_name, class: "img-thumbnail" %>
+    <%= image_tag "https://dl.dropboxusercontent.com/u/93626631/portrait/#{@user.email.split('@')[0]}.jpg", width: "150", heigth: "150", alt: @user.full_name, class: "img-thumbnail" %>
   </div>
 </div>
 
@@ -19,6 +19,17 @@
     <%= @user.full_name %>
   </div>
 </div>
+
+<% if @user.jv_presence? %>
+<div class="row">
+  <div class="col-md-2">
+    <strong>My JV's name</strong>
+  </div>
+  <div class="col-md-8">
+    <%= @user.jv_full_name %>
+  </div>
+</div>
+<% end %>
 
 <div class="row">
   <div class="col-md-2">
@@ -41,6 +52,28 @@
     <% end %>
   </div>
 </div>
+
+<% if @user.kwest_attended? %>
+<div class="row">
+  <div class="col-md-2">
+    <strong>My KWEST trip was</strong>
+  </div>
+  <div class="col-md-8">
+    <%= @user.kwest_attended %>
+  </div>
+</div>
+<% end %>
+
+<% if @user.kwest_led? %>
+<div class="row">
+  <div class="col-md-2">
+    <strong>I led a KWEST trip to</strong>
+  </div>
+  <div class="col-md-8">
+    <%= @user.kwest_led %>
+  </div>
+</div>
+<% end %>
 
 <div class="row">
   <div class="col-md-2">
