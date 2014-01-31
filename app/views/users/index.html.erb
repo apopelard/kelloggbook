@@ -27,8 +27,13 @@
         <td><%= user.full_name %><br>
           <%= user.email %></td>
         <td><%= user.jv_full_name %></td>
-        <td><%= user.program.name %><br>
-        <%= user.section.name %></td>
+        <td>
+          <% unless user.program.nil? %>
+            <%= user.program.name %><br>
+          <% end %>
+          <% unless user.section.nil? %>
+            <%= user.section.name %><br>
+          <% end %>
         <td><%= user.kwest_attended %><br>
         <%= user.kwest_led %>
         </td>

@@ -18,7 +18,7 @@ puts "There are now #{Program.count} programs registered"
 
 # Populate sections
 Section.destroy_all
-sections = ["Poets", "Jive Turkeys", "Big Dogs", "Cash Cows", "Buckets", "Bullfrogs", "Moose", "Highlanders", "Roadrunners"]
+sections = ["Poet", "Jive Turkey", "Big Dog", "Cash Cow", "Bucket", "Bullfrog", "Moose", "Highlander", "Roadrunner", "Hedgehog"]
 sections.each do |section|
   s = Section.new
   s.name = section
