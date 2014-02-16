@@ -19,3 +19,12 @@
 .bottom-space{
   padding-bottom: 20px
 }
+
+.portrait{
+  border-style: solid;
+  border-color: #BBBBBB;
+  border-width: 1px;
+  border-radius: 5px;
+  padding: 2px;
+  margin: 1px;
+}

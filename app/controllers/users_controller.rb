@@ -3,15 +3,15 @@ class UsersController < ApplicationController
   before_action(:authorized_user, :only => [:index, :new])
 
   def authorized_user
-    unless current_user.email == "apopelard2014@kellogg.northwestern.edu"
+    unless current_user.right >= 2
       redirect_to root_url, notice: "You are not allowed to view this page"
     end
   end
 
   def find_user
-    if user_signed_in?  && current_user.email != "apopelard2014@kellogg.northwestern.edu"
+    if user_signed_in?  && current_user.right != 3
       @user = current_user
-    elsif user_signed_in?  && current_user.email == "apopelard2014@kellogg.northwestern.edu" && params[:id].nil?
+    elsif user_signed_in?  && current_user.right == 3 && params[:id].nil?
       @user = current_user
     else
       @user = User.find_by(id: params[:id])

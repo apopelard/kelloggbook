@@ -1,49 +1,39 @@
 <div class="page-header">
-  <h1>Users</h1>
+  <h1>Kellogg Portrait Project</h1>
 </div>
 
-<p><%= link_to 'Add a New User', new_user_url, class: 'btn btn-primary' %></p>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Picture</th>
-      <th>Name</th>
-      <th>JV</th>
-      <th>Program</th>
-      <th>KWEST</th>
-      <th>Quote</th>
-      <th>Agreement</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= image_tag "https://dl.dropboxusercontent.com/u/93626631/portrait/#{user.email.split('@')[0]}.jpg", width: "150", heigth: "150", alt: user.full_name, class: "img-thumbnail" %></td>
-        <td><%= user.full_name %><br>
-          <%= user.email %></td>
-        <td><%= user.jv_full_name %></td>
-        <td>
-          <% unless user.program.nil? %>
-            <%= user.program.name %><br>
-          <% end %>
-          <% unless user.section.nil? %>
-            <%= user.section.name %><br>
-          <% end %>
-        <td><%= user.kwest_attended %><br>
-        <%= user.kwest_led %>
-        </td>
-        <td><%= user.quote %></td>
-        <td><%= user.agreement? %></td>
-        <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, user_url(user), class: 'btn btn-primary' %></td>
-        <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_user_url(user), class: 'btn btn-warning' %></td>
-        <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, user_url(user), method: 'delete', data: { confirm: "Do you really want to delete this user?" }, class: 'btn btn-danger' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <% @users.each do |user| %>
+    <div class="col-md-5 portrait">
+      <div class="col-md-4">
+        <%= image_tag "https://dl.dropboxusercontent.com/u/93626631/portrait/#{user.email.split('@')[0]}.jpg", width: "150", heigth: "150", alt: user.full_name, class: "img-rounded" %>
+      </div>
+      <div class="col-md-8">
+        <b><%= user.full_name %></b><br>
+        <%= user.email %><br>
+        [JV] <%= user.jv_full_name %><br>
+        [Program]
+        <% if user.right == 1 %>
+        Exchange - <%= user.kwest_attended %>
+        <% end %>
+        <% unless user.program.nil? %>
+          <%= user.program.name %>
+        <% end %>
+        <br>[Section]
+        <% unless user.section.nil? %>
+          <%= user.section.name %>
+        <% end %>
+        <br>[KWEST] <%= user.kwest_attended %><br>
+        <%= user.kwest_led %><br>
+        [Quote] <%= user.quote %><br>
+        [Agreed publication] <%= user.agreement? %><br>
+        <% if current_user.right == 3 %>
+          <%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, user_url(user), class: 'btn btn-primary' %>
+          <%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_user_url(user), class: 'btn btn-warning' %>
+          <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, user_url(user), method: 'delete', data: { confirm: "Do you really want to delete this user?" }, class: 'btn btn-danger' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 

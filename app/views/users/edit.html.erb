@@ -53,13 +53,14 @@
       <%= text_field_tag :jv_last_name, @user.jv_last_name, class: 'form-control' %>
     </div>
   </div>
-
-  <div class="form-group">
-    <%= label_tag :program_id, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= select_tag :program_id, options_from_collection_for_select(@programs, :id, :name, @current_program), class: 'form-control' %>
+  <% unless (@user.right == 1) %>
+    <div class="form-group">
+      <%= label_tag :program_id, nil, class: 'col-md-2 control-label' %>
+      <div class="col-md-6">
+        <%= select_tag :program_id, options_from_collection_for_select(@programs, :id, :name, @current_program), class: 'form-control' %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="form-group">
     <%= label_tag :section_id, nil, class: 'col-md-2 control-label' %>
@@ -69,18 +70,23 @@
   </div>
 
   <div class="form-group">
-    <%= label_tag :kwest_attended, "Which KWEST trip did you attend?", class: 'col-md-2 control-label' %>
+    <% if (@user.right == 1) %>
+      <%= label_tag :kwest_attended, "What school are you on exchange from?", class: 'col-md-2 control-label' %>
+    <% else %>
+      <%= label_tag :kwest_attended, "Which KWEST trip did you attend?", class: 'col-md-2 control-label' %>
+    <% end %>
     <div class="col-md-6">
       <%= text_field_tag :kwest_attended, @user.kwest_attended, class: 'form-control' %>
     </div>
   </div>
-
-  <div class="form-group">
-    <%= label_tag :kwest_led, "Which KWEST trip did you lead?", class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= text_field_tag :kwest_led, @user.kwest_led, class: 'form-control' %>
+  <% unless (@user.right == 1) %>
+    <div class="form-group">
+      <%= label_tag :kwest_led, "Which KWEST trip did you lead?", class: 'col-md-2 control-label' %>
+      <div class="col-md-6">
+        <%= text_field_tag :kwest_led, @user.kwest_led, class: 'form-control' %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="form-group">
     <%= label_tag :quote, "Message to myself in 2024", class: 'col-md-2 control-label' %>

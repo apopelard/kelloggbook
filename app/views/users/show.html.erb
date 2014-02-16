@@ -36,9 +36,16 @@
     <strong>My Program</strong>
   </div>
   <div class="col-md-8">
+  <% if (@user.right == 1) %>
+    On exchange from
+    <% if @user.kwest_attended.present? %>
+      <%= @user.kwest_attended %>
+    <% end %>
+  <% else %>
     <% if @user.program.present? %>
       <%= @user.program.name %>
     <% end %>
+  <% end %>
   </div>
 </div>
 

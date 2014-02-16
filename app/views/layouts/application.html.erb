@@ -40,10 +40,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <% if user_signed_in? && current_user.email != "apopelard2014@kellogg.northwestern.edu" %>
+        <% if user_signed_in? && current_user.right < 2 %>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
           <li><%= link_to current_user.email, edit_user_registration_path  %></li>
-        <% elsif user_signed_in? && current_user.email == "apopelard2014@kellogg.northwestern.edu" %>
+        <% elsif user_signed_in? && current_user.right >=2 %>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
           <li><%= link_to current_user.email, edit_user_registration_path  %></li>
           <li><%= link_to "View All", users_url  %></li>
