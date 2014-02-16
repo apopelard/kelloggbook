@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.order("first_name").page(params[:page]).per(4)
 
     respond_to do |format|
       format.html do

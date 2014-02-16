@@ -1,7 +1,9 @@
 <div class="page-header">
   <h1>Kellogg Portrait Project</h1>
 </div>
-
+    <div class="row page">
+      <%= paginate @users %>
+    </div>
 <div class="row">
   <% @users.each do |user| %>
     <div class="col-md-5 portrait">
