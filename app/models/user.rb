@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   def full_name
-    return "#{first_name} #{last_name}".titleize
+    return "#{first_name} #{last_name}"
   end
 
   def jv_full_name
