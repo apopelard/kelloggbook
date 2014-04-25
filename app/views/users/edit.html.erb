@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-4">
-    <%= image_tag "https://dl.dropboxusercontent.com/u/49026543/#{@user.email.split('@')[0]}.jpg", width: "150", heigth: "150", alt: @user.full_name, class: "img-thumbnail" %>
+    <%= image_tag "https://dl.dropboxusercontent.com/u/93626631/portrait/#{@user.email.split('@')[0]}.jpg", width: "150", heigth: "150", alt: @user.full_name, class: "img-thumbnail" %>
   </div>
   <div class="col-md-2">
     <%= link_to "Report picture problem", "mailto:meetingapp.dev@gmail.com?subject=[Kelloggbook Picture] #{@user.full_name} | ##{@user.id}&body=Please specify what is the problem with your picture", class: "btn btn-sm btn-primary" %>
