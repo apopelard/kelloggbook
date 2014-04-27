@@ -14,7 +14,7 @@ Kelloggbook::Application.configure do
     :port                 => 587,
     :domain               => "gmail.com",
     :user_name            => "meetingapp.dev@gmail.com",
-    :password             => "KIEI462buddy",
+    :password             => "PF$kw9@aEdj2",
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
